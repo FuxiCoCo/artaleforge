@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ArtaleForge</title>
+  <link rel="stylesheet" href="/shared/style.css" />
+</head>
+<body>
+  <!-- 導覽列 -->
+  <div id="navbar-placeholder"></div>
+
+  <main class="container">
+    <h1>歡迎來到 ArtaleForge 工具平台</h1>
+    <p>請從上方選單選擇功能。</p>
+  </main>
+
+  <script>
+    // 動態引入導覽列
+    fetch('/shared/navbar.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('navbar-placeholder').innerHTML = html;
+        const script = document.querySelector('#navbar-placeholder script');
+        if (script) eval(script.innerText);
+      });
+  </script>
+</body>
+</html>
